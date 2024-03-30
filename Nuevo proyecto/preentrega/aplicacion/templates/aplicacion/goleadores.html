@@ -1,0 +1,60 @@
+{% extends "aplicacion/index.html" %}
+
+
+{% block titulo %}
+<h1 class="display-5 fw-bolder text-white mb-2">Tabla de Goleadores</h1>
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+<table>
+
+    <tr>
+        <td> <h2>Goleadores</h2></td>
+        <td>
+            <a
+            href="{% url 'goleador_create' %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa fa-plus fa-lg" title="Crear"> </i>
+            </a>
+        </td>        
+    </tr>
+    
+    </table>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in goleador %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.apellido }}</td> 
+
+            <td>
+                <a
+                  href="{% url 'goleador_update' c.id %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                </a>
+                <a
+                  href="{% url 'goleador_delete' c.id %}"
+                  class="btn btn-danger"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                </a>                
+            </td>            
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}

@@ -1,0 +1,26 @@
+{% extends "aplicacion/index.html" %}
+
+
+{% block titulo %}
+<h1 class="display-5 fw-bolder text-white mb-2">Tabla de Posiciones - 1ra Division</h1>
+{% endblock titulo %}
+
+
+{% block contenido %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Posiciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for d in posicion %}
+        <tr>
+            <td>{{ d.id }}</td>
+            <td>{{ d.nombre}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %} 
